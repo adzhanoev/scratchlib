@@ -1,8 +1,4 @@
-import requests
-import re
-import json
-import websocket
-import time
+import requests, re, json, websocket, time
 
 
 class AuthenticationError(Exception):
