@@ -51,17 +51,17 @@ def post_comment(username, content, parent_id = "", commentee_id = ""):
     
     
 def follow(user):
-	try:
-		headers = {
-		"x-csrftoken": session[2],
-		"X-Token": session[1],
-		"x-requested-with": "XMLHttpRequest",
-		"Cookie": "scratchcsrftoken=" + session[2] + ";scratchlanguage=en;scratchsessionsid=" + session[0] + ";",
-		"referer": f"https://scratch.mit.edu/users/" + session[3] + "/"
-		}
-	except NameError:
-		raise AuthenticationError("You need to log in to follow a user")
-	requests.put("https://scratch.mit.edu/site-api/users/followers/" + user + "/add/?usernames=" + session[3], headers = headers).json()
+    try:
+        headers = {
+        "x-csrftoken": session[2],
+        "X-Token": session[1],
+        "x-requested-with": "XMLHttpRequest",
+        "Cookie": "scratchcsrftoken=" + session[2] + ";scratchlanguage=en;scratchsessionsid=" + session[0] + ";",
+        "referer": f"https://scratch.mit.edu/users/" + session[3] + "/"
+        }
+    except NameError:
+        raise AuthenticationError("You need to log in to follow a user")
+    requests.put("https://scratch.mit.edu/site-api/users/followers/" + user + "/add/?usernames=" + session[3], headers = headers).json()
 
 
 def unfollow(user):
