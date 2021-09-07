@@ -138,41 +138,41 @@ def following(user):
     
 
 def followers_list(user):
-	done = False
-	offset = 0
-	page = 1
-	followers = list()
-	while done == False:
-	   with requests.get(f"https://api.scratch.mit.edu/users/{user}/followers?offset={offset}") as request:
-	   	followers.extend(request.json())
-	   	if (len(request.json()) != 20):
-	   		done = True
-	   	else:
-	   	 offset += 20
-	   	 page += 1
-	my_list = list()
-	for user in followers:
-		my_list.append(user["username"])
-	return my_list
+    done = False
+    offset = 0
+    page = 1
+    followers = list()
+    while done == False:
+        with requests.get(f"https://api.scratch.mit.edu/users/{user}/followers?offset={offset}") as request:
+            followers.extend(request.json())
+            if (len(request.json()) != 20):
+                done = True
+            else:
+                offset += 20
+                page += 1
+    my_list = list()
+    for user in followers:
+        my_list.append(user["username"])
+    return my_list
 	
 	
 def following_list(user):
-	done = False
-	offset = 0
-	page = 1
-	following = list()
-	while done == False:
-	   with requests.get(f"https://api.scratch.mit.edu/users/{user}/following?offset={offset}") as request:
-	   	following.extend(request.json())
-	   	if (len(request.json()) != 20):
-	   		done = True
-	   	else:
-	   	 offset += 20
-	   	 page += 1
-	my_list = list()
-	for user in following:
-		my_list.append(user["username"])
-	return my_list
+    done = False
+    offset = 0
+    page = 1
+    following = list()
+    while done == False:
+        with requests.get(f"https://api.scratch.mit.edu/users/{user}/following?offset={offset}") as request:
+            following.extend(request.json())
+            if (len(request.json()) != 20):
+                done = True
+            else:
+                offset += 20
+                page += 1
+    my_list = list()
+    for user in following:
+        my_list.append(user["username"])
+    return my_list
 
 
 def total_loves(user):
